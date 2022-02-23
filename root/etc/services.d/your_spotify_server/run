@@ -6,3 +6,4 @@ s6-setuidgid abc yarn migrate
 
 exec \
     s6-setuidgid abc yarn start
+    
