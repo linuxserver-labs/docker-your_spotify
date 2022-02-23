@@ -3,6 +3,10 @@ name: Build Image On Release
 on:
   release:
     types: [published]
+  pull_request:
+    branches:
+      - 'main'
+    types: [ assigned ]    
 
 jobs:
   call-workflow:
