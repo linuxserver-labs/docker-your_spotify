@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+cd /app/your_spotify/server || exit 1
+
+s6-setuidgid abc yarn migrate
+
+exec \
+    s6-setuidgid abc yarn start
