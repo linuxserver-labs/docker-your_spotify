@@ -11,7 +11,7 @@ RUN \
     g++ \
     jq \
     make \
-    python2-dev \
+    python3-dev \
     yarn && \
   echo "*** install your_spotify server ***" && \
   if [ -z ${YOUR_SPOTIFY_COMMIT+x} ]; then \
