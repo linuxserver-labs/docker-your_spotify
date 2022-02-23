@@ -11,6 +11,7 @@ RUN \
     g++ \
     jq \
     make \
+    npm \
     python3-dev \
     yarn && \
   echo "*** install your_spotify server ***" && \
