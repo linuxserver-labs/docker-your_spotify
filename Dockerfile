@@ -53,7 +53,7 @@ RUN \
     g++ \
     make \
     npm \
-    python3-dev \    
+    python3-dev \
     yarn && \
   echo "*** install your_spotify client ***" && \
   cd /app/your_spotify/client && \
@@ -66,7 +66,7 @@ RUN \
   rm -rf \
     /tmp/*
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.15
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.15
 
 ARG BUILD_DATE
 ARG VERSION
@@ -99,7 +99,7 @@ RUN \
   apk del --purge \
     build-dependencies && \
   rm -rf \
-    /tmp/*  
+    /tmp/*
 
 COPY /root /
 

@@ -2,8 +2,10 @@
 
 cd /app/your_spotify/server || exit 1
 
+export API_ENDPOINT="${APP_URL}/api"
+export CLIENT_ENDPOINT="${APP_URL}"
+
 s6-setuidgid abc yarn migrate
 
 exec \
     s6-setuidgid abc yarn start
-    
