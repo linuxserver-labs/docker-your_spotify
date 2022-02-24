@@ -49,6 +49,7 @@ RUN \
     g++ \
     make \
     npm \
+    python3-dev \    
     yarn && \
   echo "*** install your_spotify client ***" && \
   cd /app/your_spotify/client && \
