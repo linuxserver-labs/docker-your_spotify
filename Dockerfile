@@ -81,7 +81,7 @@ COPY --from=server-buildstage /app/your_spotify/server/package.json /app/your_sp
 COPY --from=server-buildstage /app/your_spotify/server/lib/ /app/your_spotify/server/lib/
 
 RUN \
-  apk -U --update --no-cache add --virtual=client-build-dependencies \
+  apk -U --update --no-cache add --virtual=build-dependencies \
     build-base \
     cmake \
     gcc \
@@ -97,7 +97,7 @@ RUN \
   yarn --production && \
   yarn cache clean && \
   apk del --purge \
-    client-build-dependencies && \
+    build-dependencies && \
   rm -rf \
     /tmp/*  
 
