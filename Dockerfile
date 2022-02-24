@@ -1,6 +1,9 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as server-buildstage
 
+# set version label
 ARG YOUR_SPOTIFY_COMMIT
+LABEL build_version="Linuxserver.io version:- ${YOUR_SPOTIFY_COMMIT}"
+LABEL maintainer="thespad"
 
 RUN \
   apk -U --update --no-cache add --virtual=server-build-dependencies \
