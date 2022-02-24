@@ -82,6 +82,10 @@ COPY --from=server-buildstage /app/your_spotify/server/lib/ /app/your_spotify/se
 
 RUN \
   apk -U --update --no-cache add --virtual=client-build-dependencies \
+    build-base \
+    cmake \
+    gcc \
+    g++ \
     python3-dev && \
   apk add -U --update --no-cache \
     curl \
