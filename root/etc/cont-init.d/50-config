@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+VAR_PATH="/app/your_spotify/client/build"
+
+cp "$VAR_PATH/variables.js" "$VAR_PATH/variables-final.js"
+
+if [ -n "$API_ENDPOINT" ]
+then
+    echo "Setting API Endpoint to '$API_ENDPOINT'"
+    sed -i "s;__API_ENDPOINT__;$API_ENDPOINT;g" "$VAR_PATH/variables-final.js"
+else
+    echo "API_ENDPOINT is not defined, web app won't work"
+    exit 1
+fi
+
+HOME="/app"
+
+chown -R abc:abc \
+    /app
