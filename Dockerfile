@@ -35,7 +35,8 @@ RUN \
   yarn cache clean && \
   apk del --purge \
     server-build-dependencies && \
-  rm -rf /tmp/*
+  rm -rf \
+    /tmp/*
 
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as client-buildstage
 
@@ -62,7 +63,8 @@ RUN \
   yarn cache clean && \
   apk del --purge \
     client-build-dependencies && \
-  rm -rf /tmp/*
+  rm -rf \
+    /tmp/*
 
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 
@@ -79,6 +81,8 @@ COPY --from=server-buildstage /app/your_spotify/server/package.json /app/your_sp
 COPY --from=server-buildstage /app/your_spotify/server/lib/ /app/your_spotify/server/lib/
 
 RUN \
+  apk -U --update --no-cache add --virtual=client-build-dependencies \
+    python3-dev && \
   apk add -U --update --no-cache \
     curl \
     nodejs \
@@ -87,7 +91,11 @@ RUN \
   npm install -g serve && \
   cd /app/your_spotify/server && \
   yarn --production && \
-  yarn cache clean
+  yarn cache clean && \
+  apk del --purge \
+    client-build-dependencies && \
+  rm -rf \
+    /tmp/*  
 
 COPY /root /
 
