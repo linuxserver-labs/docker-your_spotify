@@ -4,6 +4,8 @@ VAR_PATH="/app/your_spotify/client/build"
 
 cp "$VAR_PATH/variables.js" "$VAR_PATH/variables-final.js"
 
+export API_ENDPOINT="${APP_URL}/api"
+
 if [ -n "$API_ENDPOINT" ]
 then
     echo "Setting API Endpoint to '$API_ENDPOINT'"
