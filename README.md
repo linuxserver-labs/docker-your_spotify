@@ -56,7 +56,7 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-You have to create a Spotify application through their [developer dashboard](https://developer.spotify.com/dashboard/applications) to get your Client ID and secret. Set the Redirect URI to match your APP_URL address with `/api` included after the domain (i.e., `http://localhost/api).
+You have to create a Spotify application through their [developer dashboard](https://developer.spotify.com/dashboard/applications) to get your Client ID and secret. Set the Redirect URI to match your APP_URL address with `/api/oauth/spotify/callback` included after the domain (i.e., `http://localhost/api/oauth/spotify/callback).
 
 The application requires an external mongodb database, supported versions are 4.x and 5.x.
 
