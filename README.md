@@ -93,7 +93,7 @@ services:
       - APP_URL=http://localhost
       - SPOTIFY_PUBLIC=ABC123
       - SPOTIFY_SECRET=XYZ098
-      - CORS=http://localhost:3000,http://localhost:3001
+      - CORS=http://localhost:80,https://localhost:443
       - MONGO_ENDPOINT=mongodb://mongo:27017/your_spotify
     ports:
       - 80:80
@@ -112,7 +112,7 @@ docker run -d \
   -e APP_URL=http://localhost \
   -e SPOTIFY_PUBLIC=ABC123 \
   -e SPOTIFY_SECRET=XYZ098 \
-  -e CORS=http://localhost:3000,http://localhost:3001 \
+  -e CORS=http://localhost:80,https://localhost:443 \
   -e MONGO_ENDPOINT=mongodb://mongo:27017/your_spotify \
   -p 80:80 \
   -p 443:443 \
@@ -134,7 +134,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e APP_URL=http://localhost` | The protocol and hostname where the app will be accessed. |
 | `-e SPOTIFY_PUBLIC=ABC123` | Your Spotify application client ID. |
 | `-e SPOTIFY_SECRET=XYZ098` | Your Spotify application secret. |
-| `-e CORS=http://localhost:3000,http://localhost:3001` | Allowed CORS sources, set to `all` to allow any source. |
+| `-e CORS=http://localhost:80,https://localhost:443` | Allowed CORS sources, set to `all` to allow any source. |
 | `-e MONGO_ENDPOINT=mongodb://mongo:27017/your_spotify` | Set mongodb endpoint address/port. |
 
 ## Environment variables from files (Docker secrets)
