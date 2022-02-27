@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-cd /app/your_spotify/client/build || exit 1
-
-exec \
-    s6-setuidgid abc serve -s -l tcp://0.0.0.0:3000 /app/your_spotify/client/build
-    

@@ -56,7 +56,7 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-You have to create a Spotify application through their [developer dashboard](https://developer.spotify.com/dashboard/applications) to get your Client ID and secret. Set the Redirect URI to match your API_ENDPOINT address.
+You have to create a Spotify application through their [developer dashboard](https://developer.spotify.com/dashboard/applications) to get your Client ID and secret. Set the Redirect URI to match your APP_URL address with `/api/oauth/spotify/callback` included after the domain (i.e., `http://localhost/api/oauth/spotify/callback).
 
 The application requires an external mongodb database, supported versions are 4.x and 5.x.
 
@@ -90,15 +90,14 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - API_ENDPOINT=http://localhost:8080
-      - CLIENT_ENDPOINT=http://localhost:30000
+      - APP_URL=http://localhost
       - SPOTIFY_PUBLIC=ABC123
       - SPOTIFY_SECRET=XYZ098
       - CORS=http://localhost:3000,http://localhost:3001
       - MONGO_ENDPOINT=mongodb://mongo:27017/your_spotify
     ports:
-      - 8080:8080
-      - 3000:3000
+      - 80:80
+      - 443:443
     restart: unless-stopped
 ```
 
@@ -110,14 +109,13 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -e API_ENDPOINT=http://localhost:8080 \
-  -e CLIENT_ENDPOINT=http://localhost:30000 \
+  -e APP_URL=http://localhost \
   -e SPOTIFY_PUBLIC=ABC123 \
   -e SPOTIFY_SECRET=XYZ098 \
   -e CORS=http://localhost:3000,http://localhost:3001 \
   -e MONGO_ENDPOINT=mongodb://mongo:27017/your_spotify \
-  -p 8080:8080 \
-  -p 3000:3000 \
+  -p 80:80 \
+  -p 443:443 \
   --restart unless-stopped \
   lscr.io/linuxserver-labs/your_spotify:latest
 ```
@@ -128,13 +126,12 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 8080` | HTTP port for the Server API. |
-| `-p 3000` | HTTP port for the Client webui. |
+| `-p 80` | HTTP port. |
+| `-p 443` | HTTPS port. |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e API_ENDPOINT=http://localhost:8080` | Set the server API endpoint address. This MUST be included as a valid URL in the Spotify developer dashboard. |
-| `-e CLIENT_ENDPOINT=http://localhost:30000` | Specify the client webui endpoint address. |
+| `-e APP_URL=http://localhost` | The protocol and hostname where the app will be accessed. |
 | `-e SPOTIFY_PUBLIC=ABC123` | Your Spotify application client ID. |
 | `-e SPOTIFY_SECRET=XYZ098` | Your Spotify application secret. |
 | `-e CORS=http://localhost:3000,http://localhost:3001` | Allowed CORS sources, set to `all` to allow any source. |
