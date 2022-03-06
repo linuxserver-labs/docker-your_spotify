@@ -30,6 +30,7 @@ RUN \
     /tmp/your_spotify.tar.gz -C \
     /app/your_spotify/ --strip-components=1 && \
   cd /app/your_spotify/server && \
+  sed -i '/"extends": "..\/tsconfig.json"/d' tsconfig.json  && \  
   yarn --dev --frozen-lockfile && \
   yarn build && \
   yarn cache clean && \
@@ -57,6 +58,7 @@ RUN \
     yarn && \
   echo "*** install your_spotify client ***" && \
   cd /app/your_spotify/client && \
+  sed -i '/"extends": "..\/tsconfig.json"/d' tsconfig.json  && \  
   npm install -g nodemon && \
   yarn --production=false --frozen-lockfile --network-timeout 60000 && \
   yarn build && \
