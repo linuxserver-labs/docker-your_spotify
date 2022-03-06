@@ -11,7 +11,7 @@ jobs:
     with:
       repo_owner: ${{ github.repository_owner }}
       app_name: "your_spotify"
-      release_type: "github_commit"
-      release_url: "https://api.github.com/repos/Yooooomi/your_spotify/commits"
+      release_type: "github"
+      release_url: "https://api.github.com/repos/Yooooomi/your_spotify"
     secrets:
       repo_release_token: ${{ secrets.repo_release_token }}

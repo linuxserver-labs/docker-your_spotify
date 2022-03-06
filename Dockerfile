@@ -1,8 +1,8 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as server-buildstage
 
 # set version label
-ARG YOUR_SPOTIFY_COMMIT
-LABEL build_version="Linuxserver.io version:- ${YOUR_SPOTIFY_COMMIT}"
+ARG YOUR_SPOTIFY_RELEASE
+LABEL build_version="Linuxserver.io version:- ${YOUR_SPOTIFY_RELEASE}"
 LABEL maintainer="thespad"
 
 RUN \
@@ -18,18 +18,19 @@ RUN \
     python3-dev \
     yarn && \
   echo "*** install your_spotify server ***" && \
-  if [ -z ${YOUR_SPOTIFY_COMMIT+x} ]; then \
-    YOUR_SPOTIFY_COMMIT=$(curl -sX GET "https://api.github.com/repos/Yooooomi/your_spotify/commits" \
-    | jq -r '.[0].sha'); \
+  if [ -z ${YOUR_SPOTIFY_RELEASE+x} ]; then \
+    YOUR_SPOTIFY_RELEASE=$(curl -sX GET "https://api.github.com/repos/Yooooomi/your_spotify/releases/latest" \
+    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
     /tmp/your_spotify.tar.gz -L \
-    "https://github.com/Yooooomi/your_spotify/archive/${YOUR_SPOTIFY_COMMIT}.tar.gz" && \
+    "https://github.com/Yooooomi/your_spotify/archive/${YOUR_SPOTIFY_RELEASE}.tar.gz" && \
   mkdir -p /app/your_spotify && \
   tar xzf \
     /tmp/your_spotify.tar.gz -C \
     /app/your_spotify/ --strip-components=1 && \
   cd /app/your_spotify/server && \
+  sed -i '/"extends": "..\/tsconfig.json"/d' tsconfig.json  && \  
   yarn --dev --frozen-lockfile && \
   yarn build && \
   yarn cache clean && \
@@ -57,6 +58,7 @@ RUN \
     yarn && \
   echo "*** install your_spotify client ***" && \
   cd /app/your_spotify/client && \
+  sed -i '/"extends": "..\/tsconfig.json"/d' tsconfig.json  && \  
   npm install -g nodemon && \
   yarn --production=false --frozen-lockfile --network-timeout 60000 && \
   yarn build && \
@@ -70,7 +72,6 @@ FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.15
 
 ARG BUILD_DATE
 ARG VERSION
-ARG YOUR_SPOTIFY_COMMIT
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="thespad"
 
