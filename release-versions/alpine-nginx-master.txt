@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/60858053",
-  "assets_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/60858053/assets",
-  "upload_url": "https://uploads.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/60858053/assets{?name,label}",
-  "html_url": "https://github.com/linuxserver/docker-baseimage-alpine-nginx/releases/tag/3.15-c13d0f0d-ls9",
-  "id": 60858053,
+  "url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/61460915",
+  "assets_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/61460915/assets",
+  "upload_url": "https://uploads.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/releases/61460915/assets{?name,label}",
+  "html_url": "https://github.com/linuxserver/docker-baseimage-alpine-nginx/releases/tag/3.15-0e00b736-ls9",
+  "id": 61460915,
   "author": {
     "login": "LinuxServer-CI",
     "id": 20182680,
@@ -24,16 +24,16 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDOA7dT8c4DoJ7F",
-  "tag_name": "3.15-c13d0f0d-ls9",
+  "node_id": "RE_kwDOA7dT8c4DqdGz",
+  "tag_name": "3.15-0e00b736-ls9",
   "target_commitish": "master",
-  "name": "3.15-c13d0f0d-ls9",
+  "name": "3.15-0e00b736-ls9",
   "draft": false,
   "prerelease": false,
-  "created_at": "2022-03-03T05:56:22Z",
-  "published_at": "2022-03-03T06:06:13Z",
+  "created_at": "2022-03-10T05:57:11Z",
+  "published_at": "2022-03-10T06:06:04Z",
   "assets": [],
-  "tarball_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/tarball/3.15-c13d0f0d-ls9",
-  "zipball_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/zipball/3.15-c13d0f0d-ls9",
-  "body": "**LinuxServer Changes:**\n\nI am the release message for this internal repo.\n\n**OS Changes:**\n\nUpdating base packages to c13d0f0d"
+  "tarball_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/tarball/3.15-0e00b736-ls9",
+  "zipball_url": "https://api.github.com/repos/linuxserver/docker-baseimage-alpine-nginx/zipball/3.15-0e00b736-ls9",
+  "body": "**LinuxServer Changes:**\n\nI am the release message for this internal repo.\n\n**OS Changes:**\n\nUpdating base packages to 0e00b736"
 }
