@@ -1,9 +1,9 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as server-buildstage
 
 # set version label
-ARG YOUR_SPOTIFY_RELEASE
-LABEL build_version="Linuxserver.io version:- ${YOUR_SPOTIFY_RELEASE}"
-LABEL maintainer="thespad"
+ARG BUILD_DATE
+ARG VERSION
+ARG APP_VERSION
 
 RUN \
   apk -U --update --no-cache add --virtual=server-build-dependencies \
@@ -18,13 +18,13 @@ RUN \
     python3-dev \
     yarn && \
   echo "*** install your_spotify server ***" && \
-  if [ -z ${YOUR_SPOTIFY_RELEASE+x} ]; then \
-    YOUR_SPOTIFY_RELEASE=$(curl -sX GET "https://api.github.com/repos/Yooooomi/your_spotify/releases/latest" \
+  if [ -z ${APP_VERSION+x} ]; then \
+    APP_VERSION=$(curl -sX GET "https://api.github.com/repos/Yooooomi/your_spotify/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
     /tmp/your_spotify.tar.gz -L \
-    "https://github.com/Yooooomi/your_spotify/archive/${YOUR_SPOTIFY_RELEASE}.tar.gz" && \
+    "https://github.com/Yooooomi/your_spotify/archive/${APP_VERSION}.tar.gz" && \
   mkdir -p /app/your_spotify && \
   tar xzf \
     /tmp/your_spotify.tar.gz -C \
