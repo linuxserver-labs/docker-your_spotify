@@ -29,6 +29,10 @@ Find us at:
 * [GitHub](https://github.com/linuxserver) - view the source for all of our repositories.
 * [Open Collective](https://opencollective.com/linuxserver) - please consider helping us by either donating or contributing to our budget
 
+# PROMOTION NOTICE
+
+This image has been promoted to Linuxserver proper - [https://github.com/linuxserver/docker-your_spotify](https://github.com/linuxserver/docker-your_spotify). This image will no longer be updated.
+
 # [linuxserver-labs/your_spotify](https://github.com/linuxserver-labs/docker-your_spotify)
 
 [![Scarf.io pulls](https://scarf.sh/installs-badge/linuxserver-ci/linuxserver-labs%2Fyour_spotify?color=94398d&label-color=555555&logo-color=ffffff&style=for-the-badge&package-type=docker)](https://scarf.sh/gateway/linuxserver-ci/docker/linuxserver-labs%2Fyour_spotify)
@@ -246,5 +250,6 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **30.01.23:** - Promote to Linuxserver.
 * **23.01.23:** - Rebase to Alpine 3.17, migrate to s6v3.
 * **23.02.22:** - Initial Release.

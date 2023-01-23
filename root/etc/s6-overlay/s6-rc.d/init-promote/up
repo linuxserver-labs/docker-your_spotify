@@ -1,0 +1,22 @@
+#! /command/execlineb
+
+foreground
+{
+  sleep 2
+}
+
+echo
+"********************************************************\n"
+"********************************************************\n"
+"*                                                      *\n"
+"*                         !!!!                         *\n"
+"*      This container has been promoted to a full      *\n"
+"*      Linuxserver image. This labs image will no      *\n"
+"*               longer recieve updates.                *\n"
+"*                                                      *\n"
+"*               Please switch to using                 *\n"
+"*  https://github.com/linuxserver/docker-your_spotify  *\n"
+"*                                                      *\n"
+"*                                                      *\n"
+"********************************************************\n"
+"********************************************************"
